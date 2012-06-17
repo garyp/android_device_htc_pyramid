@@ -47,6 +47,23 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_ROTATOR_KERNEL_FORMATS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := pyramid
 
 # Filesystem
+#cat /proc/emmc
+#dev:        size     erasesize name
+#mmcblk0p32: 000ffa00 00000200 "misc"
+#mmcblk0p21: 00fffc00 00000200 "recovery"
+#mmcblk0p20: 01000000 00000200 "boot"
+#mmcblk0p22: 31fffc00 00000200 "system"
+#mmcblk0p24: 077f5c00 00000200 "cache"
+#mmcblk0p23: 4aabc400 00000200 "userdata"
+#mmcblk0p28: 01400000 00000200 "devlog"
+#mmcblk0p30: 00040000 00000200 "pdata"
+#mmcblk0p25: 00008000 00000200 "extra"
+#mmcblk0p17: 02800000 00000200 "radio"
+#mmcblk0p19: 01000000 00000200 "adsp"
+#mmcblk0p18: 007ffa00 00000200 "radio_config"
+#mmcblk0p26: 00400000 00000200 "modem_st1"
+#mmcblk0p27: 00400000 00000200 "modem_st2"
+
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776192
