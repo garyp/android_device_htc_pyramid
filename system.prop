@@ -31,6 +31,7 @@ dev.pm.dyn_samplingrate=1
 
 # UMS
 persist.sys.usb.config=mass_storage,adb
+ro.vold.umsdirtyratio=70
 
 # System property for cabl
 ro.qualcomm.cabl=1
