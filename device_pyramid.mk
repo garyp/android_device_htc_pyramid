@@ -28,7 +28,7 @@ PRODUCT_PACKAGES += \
     lights.pyramid
 
 ## The gps config appropriate for this device
-PRODUCT_COPY_FILES += device/common/gps/gps.conf_EU:system/etc/gps.conf
+PRODUCT_COPY_FILES += device/common/gps/gps.conf_EU_SUPL:system/etc/gps.conf
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
