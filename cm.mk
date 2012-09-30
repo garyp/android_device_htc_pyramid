@@ -13,9 +13,6 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration
 $(call inherit-product, device/htc/pyramid/device_pyramid.mk)
 
-# Inherit UpdateMe stuff
-$(call inherit-product-if-exists, vendor/updateme/common.mk)
-
 # Device naming
 PRODUCT_DEVICE := pyramid
 PRODUCT_NAME := cm_pyramid
