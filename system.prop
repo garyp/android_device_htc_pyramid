@@ -37,5 +37,5 @@ ro.vold.umsdirtyratio=70
 ro.qualcomm.cabl=1
 
 #Low Power Audio
-lpa.decode=true
-lpa.use-stagefright=true
+#lpa.decode=true
+#lpa.use-stagefright=true
