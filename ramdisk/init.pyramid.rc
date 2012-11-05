@@ -1,11 +1,14 @@
 import init.pyramid.usb.rc
 
 on early-init
-    export EXTERNAL_STORAGE /mnt/sdcard
-    mkdir /mnt/sdcard 0000 system system
-    mkdir /mnt/usbdisk 0775 system system
+    mkdir /storage 0050 system sdcard_r
+    mkdir /storage/sdcard0 0000 system system
+    mkdir /storage/usbdisk 0775 system system
+
     # for backwards compatibility
-    symlink /mnt/sdcard /sdcard
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    export EXTERNAL_STORAGE /storage/sdcard0
 
     #8x60: firmware
     rm /vendor
@@ -45,22 +48,19 @@ on early-init
     write /dev/smd_pkt_loopback 1
 
 on early-fs
-    mkdir /system
-    mkdir /data 0771 system system
-    mkdir /cache 0770 system cache
     mkdir /devlog 0700 root root
+
+on emmc-fs
+    # mount all mmc partitions
+    mount_all /fstab.pyramid
+
+    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
     symlink /system/vendor/firmware/fw_bcmdhd.bin /vendor/firmware/fw_bcmdhd.bin
     symlink /system/vendor/firmware/fw_bcmdhd_apsta.bin /vendor/firmware/fw_bcmdhd_apsta.bin
     symlink /system/vendor/firmware/fw_bcmdhd_p2p.bin /vendor/firmware/fw_bcmdhd_p2p.bin
     symlink /system/vendor/firmware/bcm4329.hcd /vendor/firmware/bcm4329.hcd
     symlink /system/vendor/etc/audio_effects.conf /vendor/etc/audio_effects.conf
-
-    mount ext4 /dev/block/mmcblk0p22 /system wait ro data=ordered noauto_da_alloc
-    setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
-    mount ext4 /dev/block/mmcblk0p23 /data wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p24 /cache wait noatime nosuid nodev data=ordered noauto_da_alloc
-    mount ext4 /dev/block/mmcblk0p28 /devlog wait noatime nosuid nodev data=ordered noauto_da_alloc
 
 on post-fs-data
     # double check the perms and set owner
@@ -237,11 +237,11 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     oneshot
 
 # bugreport is triggered by the KEY_VOLUMEUP and KEY_VOLUMEDOWN keycodes
-service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
-    class late_start
-    disabled
-    oneshot
-    keycodes 114 115
+#service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+#    class late_start
+#    disabled
+#    oneshot
+#    keycodes 114 115
 
 service hciattach /system/bin/brcm_patchram_plus --enable_hci \
         --tosleep 50000 --baudrate 3000000 --use_baudrate_for_download \
