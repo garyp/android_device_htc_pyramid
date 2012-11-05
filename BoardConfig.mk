@@ -34,16 +34,12 @@ TARGET_BOOTLOADER_BOARD_NAME := pyramid
 BOARD_KERNEL_BASE := 0x48000000
 BOARD_KERNEL_PAGE_SIZE := 2048
 BOARD_KERNEL_CMDLINE := console=ttyHSL0 androidboot.hardware=pyramid no_console_suspend=1
-TARGET_PREBUILT_KERNEL := device/htc/pyramid/prebuilt/kernel
+#TARGET_PREBUILT_KERNEL := device/htc/pyramid/prebuilt/kernel
 TARGET_KERNEL_SOURCE := kernel/htc/msm8660
 TARGET_KERNEL_CONFIG := pyramid_defconfig
 
 WIFI_DRIVER_MODULE_NAME          := bcmdhd
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/bcmdhd.ko"
-
-# QCOM Gralloc/Copybit/HWcomposer
-TARGET_USES_OVERLAY := false
-COMMON_GLOBAL_CFLAGS += -DQCOM_ROTATOR_KERNEL_FORMATS
 
 # Qcom GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := pyramid
@@ -73,15 +69,3 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 838859776
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1252770816
 BOARD_FLASH_BLOCK_SIZE := 262144
 
-# Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-TARGET_RECOVERY_UI_LIB := librecovery_ui_pyramid
-BOARD_CUSTOM_GRAPHICS:= ../../../device/htc/pyramid/recovery/graphics.c
-BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
-BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
-BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-BOARD_USES_MMCUTILS := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-
-# Bootanimation
-TARGET_BOOTANIMATION_PRELOAD := true
