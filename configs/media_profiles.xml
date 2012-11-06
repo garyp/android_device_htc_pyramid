@@ -139,11 +139,11 @@
         </EncoderProfile>
 
         <EncoderProfile quality="1080p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
+            <Video codec="m4v"
                    bitRate="20000000"
                    width="1920"
                    height="1088"
-                   frameRate="30" />
+                   frameRate="31" />
             <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
@@ -203,11 +203,11 @@
         </EncoderProfile>
 
         <EncoderProfile quality="timelapse1080p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
+            <Video codec="m4v"
                    bitRate="20000000"
                    width="1920"
                    height="1088"
-                   frameRate="30" />
+                   frameRate="31" />
             <!-- audio setting is ignored -->
             <Audio codec="aac"
                    bitRate="96000"
@@ -281,7 +281,7 @@
         minFrameRate="15" maxFrameRate="31" />
 
     <VideoEncoderCap name="m4v" enabled="true"
-        minBitRate="64000" maxBitRate="4000000"
+        minBitRate="64000" maxBitRate="20000000"
         minFrameWidth="176" maxFrameWidth="1920"
         minFrameHeight="144" maxFrameHeight="1088"
         minFrameRate="15" maxFrameRate="31" />
