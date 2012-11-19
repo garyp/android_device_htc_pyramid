@@ -115,6 +115,10 @@ PRODUCT_COPY_FILES += \
     device/htc/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/htc/pyramid/configs/media_profiles.xml:system/etc/media_profiles.xml
 
+# OS2 Boot animation
+PRODUCT_COPY_FILES += \
+    device/htc/pyramid/prebuilt/bootanimation.zip:system/media/bootanimation.zip
+
 ## misc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
