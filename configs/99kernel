@@ -90,7 +90,7 @@ FSYNC=2
 # Disabled by default
 # 0 = Disabled
 # 1 = Enabled
-TUN=0
+TUN=1
 
 
 # End of configurable options #
